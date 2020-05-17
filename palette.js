@@ -16,19 +16,13 @@ document.querySelector('.tools').addEventListener('click', function(e) {
         li.style.backgroundColor = '';
 
         if (li.classList.contains('selected')) {
-            
+
             li.classList.remove('selected');
 
         }
     });
     chosenTool.classList.add('selected');
 });
-
-//document.querySelector('.pencil').addEventListener('click', drawPencil); //DONE!
-//document.querySelector('.palette').addEventListener('click', chooseColor);
-document.querySelector('.drawLine').addEventListener('click', drawLine);
-document.querySelector('.drawCircle').addEventListener('click', drawCircle);
-document.querySelector('.drawRectangle').addEventListener('click', drawRectangle);
 
 let figuresForDrawing = []; //сохраняем данные о нарисованных фигурах
 
@@ -76,17 +70,19 @@ const figureDrawer = {
         ctx.stroke();
     },
 }
+//////////////////////////
 
 
-function drawCircle() {
-    alert('circle');
+let tools = {
+    drawCircle() {
+        alert('circle');
         let centerX, centerY;
-		let radius;
+        let radius;
 
         canvas.onmousedown = function(e) {    
             centerX = e.offsetX; //координаты центра круга
             centerY = e.offsetY;
-        } 
+        }; 
         
         canvas.onmousemove = function(e) {
             if (e.which == 1) {
@@ -94,81 +90,89 @@ function drawCircle() {
                 let y1 = e.offsetY;
 
                 radius = Math.pow(Math.pow(x1 - centerX, 2) + Math.pow(y1 - centerY, 2), 0.5);
-
                 redrawing();
                 figureDrawer.circle(centerX, centerY, radius, color(), width());
             }     
-        }   
+        };   
 
-        canvas.addEventListener('mouseup', function(e) {
+        canvas.onmouseup = function(e) {
             figuresForDrawing.push({
                 type: 'circle',
                 data: [centerX, centerY, radius, color(), width()]
             });
             redrawing();
-        });
-}
-
-function drawRectangle () {
-    alert('rectangle');
-
-    let startX, startY;
-    let widthRect, heightRect;
-
-    canvas.onmousedown = function (e) {
-        startX = e.offsetX;
-        startY = e.offsetY;
-    } //нашли координаты верхнего угла прямоугольника
-
-    canvas.onmousemove = function (e) {   
-        if(e.which == 1) {
-            widthRect = e.offsetX - startX;
-            heightRect = e.offsetY - startY;
-
-            redrawing();
-            figureDrawer.rectangle(startX, startY, widthRect, heightRect, color(), width());
+        };
+    },
+    drawRectangle() {
+        alert('rectangle');
+    
+        let startX, startY;
+        let widthRect, heightRect;
+    
+        canvas.onmousedown = function (e) {
+            startX = e.offsetX;
+            startY = e.offsetY;
+        } //нашли координаты верхнего угла прямоугольника
+    
+        canvas.onmousemove = function (e) {   
+            if(e.which == 1) {
+                widthRect = e.offsetX - startX;
+                heightRect = e.offsetY - startY;
+    
+                redrawing();
+                figureDrawer.rectangle(startX, startY, widthRect, heightRect, color(), width());
+            }
         }
-    }
-
-    canvas.onmouseup = function (e) {
-        figuresForDrawing.push({
-            type: 'rectangle',
-            data: [startX, startY, widthRect, heightRect, color(), width()]
-        })
-        redrawing();
-    }
-}
-
-function drawLine() {
-    alert('line');
-
-    let startX1, startY1;
-    let endX2, endY2;
-
-    canvas.addEventListener('mousedown', function(e) {
-        startX1 = e.offsetX;
-        startY1 = e.offsetY;
-    }) //получили координаты первой точки
-
-    canvas.addEventListener('mousemove', function(e) {
-        if(e.which == 1){
-            endX2 = e.offsetX;
-            endY2 = e.offsetY;
+    
+        canvas.onmouseup = function (e) {
+            figuresForDrawing.push({
+                type: 'rectangle',
+                data: [startX, startY, widthRect, heightRect, color(), width()]
+            })
+            radius = null;
             redrawing();
-            figureDrawer.line(startX1, startY1, endX2, endY2);
         }
-    })
-
-    canvas.addEventListener('mouseup', function(e) {
-        figuresForDrawing.push({
-            type: 'line',
-            data: [startX1, startY1, endX2, endY2, color(), width()]
-        });
-        startX1 = null;
-        startY1 = null;
-        redrawing();
-    })
+    },
+    drawLine() {
+        alert('line');
+    
+        let startX1, startY1;
+        let endX2, endY2;
+    
+        canvas.onmousedown = function(e) {
+            startX1 = e.offsetX;
+            startY1 = e.offsetY;
+        }; //получили координаты первой точки
+    
+        canvas.onmousemove = function(e) {
+            if(e.which == 1){
+                endX2 = e.offsetX;
+                endY2 = e.offsetY;
+                redrawing();
+                figureDrawer.line(startX1, startY1, endX2, endY2, color(), width());
+            }
+        };
+    
+        canvas.onmouseup = function(e) {
+            if (e.which == 1) {
+                figuresForDrawing.push({
+                    type: 'line',
+                    data: [startX1, startY1, endX2, endY2, color(), width()]
+                });
+                startX = null;
+                startY = null;
+                redrawing();
+            }
+        };
+    }
 }
+
+//document.querySelector('.pencil').addEventListener('click', drawPencil); //DONE!
+//document.querySelector('.palette').addEventListener('click', chooseColor);
+document.querySelector('.drawLine').addEventListener('click', tools.drawLine);
+document.querySelector('.drawCircle').addEventListener('click', tools.drawCircle);
+document.querySelector('.drawRectangle').addEventListener('click', tools.drawRectangle);
+
 
 // function drawPencil() {
 //     alert('pencil');
