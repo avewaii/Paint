@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 document.body.onload = function(e) { //onload page == pencil 
     let pencil = document.querySelector('.pencil');
     pencil.classList.add('selected');
-    pencil();
+    tools.drawPencil();
 }
 
 document.querySelector('.tools').addEventListener('click', function(e) {
@@ -70,8 +70,6 @@ const figureDrawer = {
         ctx.stroke();
     },
 }
-//////////////////////////
-
 
 let tools = {
     drawCircle() {
@@ -164,41 +162,39 @@ let tools = {
                 redrawing();
             }
         };
-    }
-}
+    },
+    drawPencil() {
+        alert('pencil');
+        let curX, curY;
 
-//document.querySelector('.pencil').addEventListener('click', drawPencil); //DONE!
+        canvas.onmousedown = function(e){ 
+            curX = e.offsetX;
+            curY = e.offsetY;
+        };
+
+        canvas.onmousemove = function(e){
+            if (curX && curY) {
+                figuresForDrawing.push({
+                    type: 'line',
+                    data: [curX, curY, e.offsetX, e.offsetY]
+                });
+                curX = e.offsetX;
+                curY = e.offsetY;
+                redrawing();
+            }
+        };
+
+        canvas.onmouseup = function(e) {   
+            curX = null;
+            curY = null;
+        };
+    },
+};
+
+document.querySelector('.pencil').addEventListener('click', tools.drawPencil); //DONE!
 //document.querySelector('.palette').addEventListener('click', chooseColor);
 document.querySelector('.drawLine').addEventListener('click', tools.drawLine);
 document.querySelector('.drawCircle').addEventListener('click', tools.drawCircle);
 document.querySelector('.drawRectangle').addEventListener('click', tools.drawRectangle);
 
 
-// function drawPencil() {
-//     alert('pencil');
-//         document.querySelector('canvas').style.cursor = 'url(LargePencil.cur), auto';
-
-//         let curX, curY;
-
-//         canvas.addEventListener('mousedown', function(e){ 
-//             curX = e.offsetX;
-//             curY = e.offsetY;
-//         });
-
-//         canvas.addEventListener('mousemove', function(e){
-//             if (curX && curY) {
-//                 figuresForDrawing.push({
-//                     type: 'line',
-//                     data: [curX, curY, e.offsetX, e.offsetY]
-//                 });
-//                 curX = e.offsetX;
-//                 curY = e.offsetY;
-//                 redrawing();
-//             }
-//         });
-
-//         canvas.addEventListener("mouseup", function(e) {   
-//             curX = null;
-//             curY = null;
-//         });
-//     }
