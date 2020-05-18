@@ -189,12 +189,16 @@ let tools = {
             curY = null;
         };
     },
+    refresh () {
+        alert('refresh');
+        ctx.clearRect(0, 0, 520, 520);
+    }
 };
 
-document.querySelector('.pencil').addEventListener('click', tools.drawPencil); //DONE!
-//document.querySelector('.palette').addEventListener('click', chooseColor);
+document.querySelector('.pencil').addEventListener('click', tools.drawPencil);
 document.querySelector('.drawLine').addEventListener('click', tools.drawLine);
 document.querySelector('.drawCircle').addEventListener('click', tools.drawCircle);
 document.querySelector('.drawRectangle').addEventListener('click', tools.drawRectangle);
-
+document.querySelector('.eraser').addEventListener('click', tools.drawEraser);
+document.querySelector('.refreshButton').addEventListener('click', tools.refresh);
 
