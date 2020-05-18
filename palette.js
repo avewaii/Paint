@@ -60,6 +60,7 @@ const figureDrawer = {
         ctx.strokeStyle = color;
         ctx.lineWidth = width;
 
+        console.log('color line', color);
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
@@ -68,7 +69,7 @@ const figureDrawer = {
         ctx.lineTo(endX2, endY2);
         ctx.closePath();
         ctx.stroke();
-    },
+    }
 }
 
 let tools = {
@@ -176,7 +177,7 @@ let tools = {
             if (curX && curY) {
                 figuresForDrawing.push({
                     type: 'line',
-                    data: [curX, curY, e.offsetX, e.offsetY]
+                    data: [curX, curY, e.offsetX, e.offsetY, color(), width()]
                 });
                 curX = e.offsetX;
                 curY = e.offsetY;
@@ -197,7 +198,32 @@ let tools = {
     },
     drawEraser () {
         alert('drawEraser');
-    }
+        let curX, curY;
+        let color = 'white';
+
+        canvas.onmousedown = function(e){ 
+            curX = e.offsetX;
+            curY = e.offsetY;
+        };
+
+        canvas.onmousemove = function(e){
+            if (curX && curY) {
+                figuresForDrawing.push({
+                    type: 'line',
+                    data: [curX, curY, e.offsetX, e.offsetY, color, width()]
+                });
+                console.log('color eraser', color);
+                curX = e.offsetX;
+                curY = e.offsetY;
+                redrawing();
+            }
+        };
+
+        canvas.onmouseup = function(e) {   
+            curX = null;
+            curY = null;
+        };
+    },
 };
 
 document.querySelector('.pencil').addEventListener('click', tools.drawPencil);
