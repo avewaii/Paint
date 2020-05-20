@@ -225,6 +225,10 @@ let tools = {
             curY = null;
         };
     },
+    refresh () {
+        alert('refresh');
+        ctx.clearRect(0, 0, 520, 520);
+    }
 };
 
 document.querySelector('.pencil').addEventListener('click', tools.drawPencil);
