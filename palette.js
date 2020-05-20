@@ -44,7 +44,7 @@ const figureDrawer = {
     circle (centerX, centerY, radius, color, width) {
         ctx.strokeStyle = color;
         ctx.lineWidth = width;
-
+        
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI); 
         ctx.closePath();
@@ -198,6 +198,7 @@ let tools = {
     },
     drawEraser () {
         alert('drawEraser');
+        
         let curX, curY;
         let color = 'white';
 
