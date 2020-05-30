@@ -16,22 +16,22 @@ const Tools = () => {
         color="primary"
         aria-label="text primary button group">
             <Button>
-              <CreateIcon/>
+              <CreateIcon fontSize="large"/>
             </Button>
             <Button>
-              <PaletteIcon/>
+              <PaletteIcon fontSize="large"/>
             </Button>
             <Button>
-              <RadioButtonUncheckedIcon/>
+              <RadioButtonUncheckedIcon fontSize="large"/>
             </Button>
             <Button>
-              <CropSquareIcon/>
+              <CropSquareIcon fontSize="large"/>
             </Button>
             <Button>
               Line
             </Button>
             <Button>
-              <CachedIcon/>
+              <CachedIcon fontSize="large"/>
             </Button>
          </ButtonGroup>
     )
