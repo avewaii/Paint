@@ -25,7 +25,7 @@ function App() {
         <Grid item xs={0} sm={3}/>
         <Grid item container xs={12} sm={6} direction='column' spacing={3}>
           <Grid item>
-            <Content/>
+            <canvas width="512px" height="512px" style="color: blue"></canvas>
           </Grid>
           <Grid item>
             <DiscreteSlider/>

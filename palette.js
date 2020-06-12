@@ -228,6 +228,7 @@ let tools = {
     refresh () {
         alert('refresh');
         ctx.clearRect(0, 0, 520, 520);
+        figuresForDrawing = [];
     }
 };
 
