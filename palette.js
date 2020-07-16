@@ -214,6 +214,7 @@ let tools = {
             curY = null;
         };
     },
+    
     refresh () {
         ctx.clearRect(0, 0, 520, 520);
         figuresForDrawing.length = 0;

@@ -54,8 +54,13 @@ aside {
     background-color: #d8a5d8;
 }
 
-.range {
-    margin-top: 0.5em;
+.range-container {
+    margin-top: 1em;
+}
+
+.range-container span {
+    position: relative;
+    top: -2px;
 }
 
 canvas { 
