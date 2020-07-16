@@ -226,4 +226,3 @@ document.querySelector('.drawCircle').addEventListener('click', tools.drawCircle
 document.querySelector('.drawRectangle').addEventListener('click', tools.drawRectangle);
 document.querySelector('.eraser').addEventListener('click', tools.drawEraser);
 document.querySelector('.refreshButton').addEventListener('click', tools.refresh);
-
