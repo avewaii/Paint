@@ -10,7 +10,6 @@ document.body.onload = function(e) { //onload page == pencil
 
 document.querySelector('.tools').addEventListener('click', function(e) {
     let chosenTool = e.target.closest('li');
-    console.log(chosenTool);
 
     document.querySelectorAll('li').forEach( function (li) {
         li.style.backgroundColor = '';
@@ -59,8 +58,6 @@ const figureDrawer = {
     line(startX1, startY1, endX2, endY2, color, width) {
         ctx.strokeStyle = color;
         ctx.lineWidth = width;
-
-        console.log('color line', color);
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
@@ -74,7 +71,6 @@ const figureDrawer = {
 
 let tools = {
     drawCircle() {
-        alert('circle');
         let centerX, centerY;
         let radius;
 
@@ -103,8 +99,6 @@ let tools = {
         };
     },
     drawRectangle() {
-        alert('rectangle');
-    
         let startX, startY;
         let widthRect, heightRect;
     
@@ -133,8 +127,6 @@ let tools = {
         }
     },
     drawLine() {
-        alert('line');
-    
         let startX1, startY1;
         let endX2, endY2;
     
@@ -165,7 +157,6 @@ let tools = {
         };
     },
     drawPencil() {
-        alert('pencil');
         let curX, curY;
 
         canvas.onmousedown = function(e){ 
@@ -196,9 +187,7 @@ let tools = {
         figuresForDrawing = [];
 
     },
-    drawEraser () {
-        alert('drawEraser');
-        
+    drawEraser () {  
         let curX, curY;
         let color = 'white';
 
@@ -213,7 +202,7 @@ let tools = {
                     type: 'line',
                     data: [curX, curY, e.offsetX, e.offsetY, color, width()]
                 });
-                console.log('color eraser', color);
+
                 curX = e.offsetX;
                 curY = e.offsetY;
                 redrawing();
@@ -226,7 +215,6 @@ let tools = {
         };
     },
     refresh () {
-        alert('refresh');
         ctx.clearRect(0, 0, 520, 520);
         figuresForDrawing.length = 0;
     }
