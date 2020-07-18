@@ -11,7 +11,8 @@ body {
 header {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     height: 8vh;
     box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
     font-size: 2vh;
@@ -20,7 +21,7 @@ header {
 
 main {
     max-height: 100vh;
-    display: flex;
+    display: flex; 
 }
 
 aside {
@@ -88,7 +89,7 @@ aside {
 .canvas { 
     margin: 0 auto;
     border: 2px solid #b18597;
-    
+    cursor: crosshair;
 }
 
 #color {
@@ -158,5 +159,10 @@ aside {
 
     .range-container span {
         margin-right: 1em;
+    }
+
+    .range {
+        position: relative;
+        top: 5px;
     }
 }
