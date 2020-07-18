@@ -1,6 +1,11 @@
 * {
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
+    color: #382b22;
+}
+
+body {
+    background-color: #fff;
 }
 
 header {
@@ -8,7 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 8vh;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
     font-size: 2vh;
     margin-bottom: 1.5em;
 }
@@ -35,18 +40,18 @@ aside {
     width: 4.1em;
     height: 4.1em;
     min-width: 60px;
-    border: 1px solid rgb(48, 46, 46);
+    border: 1px solid #b18597;
     margin: 0.05em 0;
-    background-color: #e7e7e7;
+    background-color: #fff0f0;
     cursor: pointer;
 }
 
 .tools li.selected {
-    background-color: #d8a5d8;
+    background-color: #f9c4d2;
 }
 
 .tools li:hover {
-    background-color: rgb(169, 170, 179);
+    background-color: #ffe9e9;
 }
 
 .range-container {
@@ -54,14 +59,35 @@ aside {
     margin-left: 2.5em;
 }
 
-.range-container span {
-    position: relative;
-    top: -2px;
+.range {
+    -webkit-appearance: none;
+    height: 7px;
+    border-radius: 5px;  
+    background: #dbdbdd;
+    outline: none;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #f9c4d2;
+    cursor: pointer;
+}
+
+.range::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #b18597;
+    cursor: pointer;
 }
 
 .canvas { 
     margin: 0 auto;
-    border: 2px solid rgb(75, 69, 69);
+    border: 2px solid #b18597;
     
 }
 
@@ -106,7 +132,6 @@ aside {
         display: flex;
         flex-direction: column;
         position: static;
-        background-color: aqua;
     }
 
     .aside-menu {
@@ -118,7 +143,6 @@ aside {
     .aside-menu ul {
         display: flex;
         flex-direction: row;
-        background-color: #d8a5d8;
         padding-inline-start: 0;
     }
 
@@ -128,7 +152,6 @@ aside {
 
     .range-container {
         display: flex;
-        background-color: yellow;
         margin: 0 auto;
         justify-content: center;
     }
