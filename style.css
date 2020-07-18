@@ -16,20 +16,15 @@ header {
 main {
     max-height: 100vh;
     display: flex;
-    justify-content: flex-start;
 }
 
 aside {
     position: fixed;
-    left: 0;
-}
-
-.aside-menu {
-    display: flex;
 }
 
 .aside-menu ul {
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     list-style-type: none;
     text-align: center;  
@@ -46,16 +41,17 @@ aside {
     cursor: pointer;
 }
 
+.tools li.selected {
+    background-color: #d8a5d8;
+}
+
 .tools li:hover {
     background-color: rgb(169, 170, 179);
 }
 
-.selected {
-    background-color: #d8a5d8;
-}
-
 .range-container {
     margin-top: 1em;
+    margin-left: 2.5em;
 }
 
 .range-container span {
@@ -63,9 +59,10 @@ aside {
     top: -2px;
 }
 
-canvas { 
+.canvas { 
     margin: 0 auto;
     border: 2px solid rgb(75, 69, 69);
+    
 }
 
 #color {
@@ -97,4 +94,46 @@ canvas {
 
 .palette {  /*изображение в выборе цвета*/
     position: absolute;    
+}
+
+@media screen and (max-width: 900px) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    aside {
+        display: flex;
+        flex-direction: column;
+        position: static;
+        background-color: aqua;
+    }
+
+    .aside-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .aside-menu ul {
+        display: flex;
+        flex-direction: row;
+        background-color: #d8a5d8;
+        padding-inline-start: 0;
+    }
+
+    .tools li {
+        margin: 0.5em 0.05em;
+    }
+
+    .range-container {
+        display: flex;
+        background-color: yellow;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .range-container span {
+        margin-right: 1em;
+    }
 }
